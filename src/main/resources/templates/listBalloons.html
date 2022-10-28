@@ -15,13 +15,21 @@
 </header>
 <main>
     <h2>Choose balloon color:</h2>
-    <input type="radio" name="color" value="Red Balloon"> Red Balloon<br/>
-    <input type="radio" name="color" value="Green Balloon"> Green Balloon<br/>
-    <input type="radio" name="color" value="Yellow Balloon"> Yellow Balloon<br/>
-    <input type="radio" name="color" value="Blue Balloon"> Blue Balloon<br/>
+<!--    <input type="radio" name="color" value="Red Balloon"> Red Balloon<br/>-->
+<!--    <input type="radio" name="color" value="Green Balloon"> Green Balloon<br/>-->
+<!--    <input type="radio" name="color" value="Yellow Balloon"> Yellow Balloon<br/>-->
+<!--    <input type="radio" name="color" value="Blue Balloon"> Blue Balloon<br/>-->
+
+    <form th:href="selectBalloonSize.html" th:method="POST">
+        <label>Red Balloon</label>:<input type='radio' name='color'>
+        <label>Green Balloon</label>:<input type='radio' name='color'>
+        <label>Yellow Balloon</label>:<input type='radio' name='color'>
+        <label>Blue Balloon</label>:<input type='radio' name='color'>
+    </form>
 
     <br/>
-    <a href="/selectBalloonSize.html">Submit</a>
+    <input type="submit" value="Submit">
+<!--    <a href="/BalloonOrder">Submit</a>-->
 </main>
 </body>
 </html>

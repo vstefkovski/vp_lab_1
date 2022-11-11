@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <title>Balloon Order page - Welcome and choose a Balloon</title>
@@ -13,23 +14,18 @@
 <header>
     <h1>Welcome to our Balloon Shop App</h1>
 </header>
-<main>
+
     <h2>Choose balloon color:</h2>
-<!--    <input type="radio" name="color" value="Red Balloon"> Red Balloon<br/>-->
-<!--    <input type="radio" name="color" value="Green Balloon"> Green Balloon<br/>-->
-<!--    <input type="radio" name="color" value="Yellow Balloon"> Yellow Balloon<br/>-->
-<!--    <input type="radio" name="color" value="Blue Balloon"> Blue Balloon<br/>-->
+    <form th:method="POST" th:action="@{/}">
 
-    <form th:href="selectBalloonSize.html" th:method="POST">
-        <label>Red Balloon</label>:<input type='radio' name='color'>
-        <label>Green Balloon</label>:<input type='radio' name='color'>
-        <label>Yellow Balloon</label>:<input type='radio' name='color'>
-        <label>Blue Balloon</label>:<input type='radio' name='color'>
-    </form>
+        <input type="radio" name="color" value="Red Balloon"> Red Balloon<br/>
+        <input type="radio" name="color" value="Green Balloon"> Green Balloon<br/>
+        <input type="radio" name="color" value="Yellow Balloon"> Yellow Balloon<br/>
+        <input type="radio" name="color" value="Blue Balloon"> Blue Balloon<br/>
 
-    <br/>
-    <input type="submit" value="Submit">
-<!--    <a href="/BalloonOrder">Submit</a>-->
-</main>
+        <br/>
+
+<input type="submit" value="Submit">
+</form>
 </body>
 </html>

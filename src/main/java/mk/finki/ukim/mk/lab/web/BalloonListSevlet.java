@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "balloon_servlet", urlPatterns = "")
+@WebServlet(name = "balloon_list_servlet", urlPatterns = "")
 public class BalloonListSevlet extends HttpServlet {
     private final SpringTemplateEngine springTemplateEngine;
     private final BalloonService balloonService;
@@ -25,15 +25,6 @@ public class BalloonListSevlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        PrintWriter out = resp.getWriter();
-//        out.println("<html>");
-//        out.println("<body>");
-//        out.println("<h3>Balloon List");
-//        out.println("<ul>");
-//        this.balloonService.listAll().forEach(r -> out.format("<li>%s %s</li>", r.getName(), r.getDescription()));
-//        out.println("</ul>");
-//        out.println("</body>");
-//        out.println("</html>");
         WebContext context = new WebContext(req, resp, req.getServletContext());
         context.setVariable("balloons", this.balloonService.listAll());
         this.springTemplateEngine.process("listBalloons.html", context, resp.getWriter());
@@ -43,6 +34,8 @@ public class BalloonListSevlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        String selectedColor = req.getParameter("color");
+        req.getSession().setAttribute("color",selectedColor);
+        resp.sendRedirect("/selectBalloon");
     }
 }

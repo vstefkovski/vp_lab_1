@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <title>WP lab - Confirmation Info</title>
@@ -52,7 +52,11 @@
             <td><b>Balloon Size </b></td>
             <td> <th:block th:text="${balloonSize}"></th:block> </td>
         </tr>
-    </table>
+    </table><br>
+    <div>
+        <a th:href="@{'/orders/add'}">Confirm order</a>
+        <a th:href="@{'/orders'}">View all orders</a>
+    </div>
     <div>
         <a href="/logout">Log out</a>
     </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <title>Balloon Order page - Welcome and choose a Balloon</title>
@@ -14,18 +14,17 @@
 <header>
     <h1>Welcome to our Balloon Shop App</h1>
 </header>
-
-    <h2>Choose balloon color:</h2>
-    <form th:method="POST" th:action="@{/}">
-
-        <input type="radio" name="color" value="Red Balloon"> Red Balloon<br/>
-        <input type="radio" name="color" value="Green Balloon"> Green Balloon<br/>
-        <input type="radio" name="color" value="Yellow Balloon"> Yellow Balloon<br/>
-        <input type="radio" name="color" value="Blue Balloon"> Blue Balloon<br/>
-
-        <br/>
-
-<input type="submit" value="Submit">
-</form>
+<h2>Choose balloon color:</h2>
+<form th:action="@{/balloons}" th:method="POST">
+    <th:block th:each="balloon : ${balloons}">
+        <input type="radio" name="color" th:value="${balloon.getName()}"> <th:block th:text="${balloon.getName()}"></th:block>
+        <a th:href="@{'/balloons/edit-form/{id}' (id=${balloon.getId()})}">Edit</a>
+        <a th:href="@{'/balloons/delete/{id}' (id=${balloon.getId()})}">Delete</a>
+        <br>
+    </th:block>
+    <br>
+    <input type="submit" value="Submit">
+</form><br><br>
+<a href="/balloons/add-form">New balloon</a>
 </body>
 </html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Balloon</title>
+</head>
+<body>
+<form action="/balloons/add" method="post">
+    <span>Name</span><br>
+    <input type="text" name="name" id="name" th:value="(${balloon}!=null ? ${balloon.getName()} : '')" required>
+    <br><br>
+    <span>Description</span><br>
+    <input type="text" name="description" id="description" th:value="(${balloon}!=null ? ${balloon.getDescription()} : '')" required>
+    <br><br>
+    <span>Manufacturer</span><br>
+
+    <select name="manufacturer">
+        <option th:if="(${balloon}!=null)"
+                th:selected="( ${ balloon.getManufacturer()!=null && balloon.getManufacturer().getId()==manufacturer.getId() } )"
+                th:each="manufacturer : ${manufacturers}"
+                th:text="${manufacturer.getName()}"
+                th:value="${manufacturer.getId()}">
+        </option>
+        <option th:if="(${balloon}==null)"
+                th:each="manufacturer : ${manufacturers}"
+                th:text="${manufacturer.getName()}"
+                th:value="${manufacturer.getId()}">
+        </option>
+    </select>
+
+    <br><br>
+
+
+
+    <br><br>
+    <input type="submit" value="Submit">
+    <a href="/balloons">Back</a>
+</form>
+</body>
+</html>
